@@ -29,6 +29,7 @@ change.
   R-1UUO-LYH3, R-1W2K-ZQ7S, R-1XAH-DHYH, R-1YID-R9P6, R-1ZQA-51FV,
   R-20Y6-IT6K.
 - **D7** → `D07.md` — Live verification against a real provider — R-2262-WKX9.
+- **D8** → `D08.md` — Build and install tooling — none; structural.
 
 ## Verification ids → Decision
 
