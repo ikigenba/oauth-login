@@ -12,5 +12,3 @@ file deliberately carries no bare status glyph outside phase lines, so the
 anchored grep matches only phase lines.
 
 Next phase: 06
-
-- Phase 05 ⬜ realizes D7 — the live smoke against a real provider
