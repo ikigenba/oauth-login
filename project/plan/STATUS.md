@@ -13,7 +13,6 @@ anchored grep matches only phase lines.
 
 Next phase: 06
 
-- Phase 01 ⬜ realizes D2, D3 — internal/oauth: PKCE, authorize URL, token exchange
 - Phase 02 ⬜ realizes D4 — internal/callback: the loopback listener
 - Phase 03 ⬜ realizes D5 (slice) — internal/browser: the launch seam
 - Phase 04 ⬜ realizes D6, D5 (slice) — cmd/oauth-login: flags, composition, streams, exits
