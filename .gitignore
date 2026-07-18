@@ -1,2 +1,7 @@
 project/loops/brief.md
 bin/
+
+# Credential output from a real login. Never tracked: running the tool in
+# this directory with the documented `> auth.json` redirect drops real
+# tokens here.
+/auth.json
