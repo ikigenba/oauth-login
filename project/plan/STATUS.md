@@ -13,4 +13,3 @@ anchored grep matches only phase lines.
 
 Next phase: 07
 
-- Phase 06 ⬜ realizes D8 — the Makefile: build, fmt, test, check, install, clean
