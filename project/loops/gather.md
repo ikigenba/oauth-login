@@ -1,3 +1,7 @@
+---
+harness: claude
+model: claude-sonnet-5
+---
 # Gather — author the phase brief
 
 You are the **gather** step of the `oauth-login` build loop. You run in a fresh,

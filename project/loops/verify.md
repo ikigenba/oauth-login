@@ -1,3 +1,7 @@
+---
+harness: claude
+model: claude-opus-4-8
+---
 # Verify — the independent gate
 
 You are the **verify** step of the `oauth-login` build loop. You run in a fresh,

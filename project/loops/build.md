@@ -1,3 +1,7 @@
+---
+harness: codex
+model: gpt-5.6-sol
+---
 # Build — realize the phase brief
 
 You are the **build** step of the `oauth-login` build loop. You run in a fresh,
