@@ -13,4 +13,3 @@ anchored grep matches only phase lines.
 
 Next phase: 09
 
-- Phase 08 ⬜ realizes — (structural) — build, release, and install tooling (Makefile stamp, install.sh, goreleaser, release workflow)
