@@ -34,6 +34,15 @@ contracts and `$ralph` for the unattended build workflow.
 
 ## Versioning
 
-Versions are annotated git tags only, `vMAJOR.MINOR.PATCH` — no `VERSION`
-file, no version constant. Cut a release with
-`git tag -a vX.Y.Z -m "vX.Y.Z"` on `main`.
+Versions are annotated git tags, `vMAJOR.MINOR.PATCH` — no `VERSION` file. The
+version is derived from the tag, not hand-maintained in source: `cmd/oauth-login`
+carries `var version = "dev"`, and the build stamps the real value via
+`-ldflags "-X main.version=<v>"` (`make build` uses `git describe --tags
+--always --dirty`; goreleaser uses the tag). `oauth-login -V` prints it.
+
+Releasing is manual and human-initiated: cut a release with
+`git tag -a vX.Y.Z -m "vX.Y.Z"` on `main` and push the tag. The first release is
+`v0.1.0`. Pushing a `v*` tag triggers `.github/workflows/release.yml`, which
+runs goreleaser to cross-compile the archives and publish the GitHub Release
+that `install.sh` (the `curl … | sh` installer) pulls from. Nothing automates
+the decision to release, the version bump, or the tag itself.
