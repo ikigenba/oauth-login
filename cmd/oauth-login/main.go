@@ -20,6 +20,8 @@ import (
 	"github.com/ikigenba/oauth-login/internal/oauth"
 )
 
+var version = "dev"
+
 const helpExample = `
 Example:
   oauth-login \
@@ -60,6 +62,10 @@ const helpFlags = `  --auth-url string
         print the authorize URL without opening a browser
   --timeout duration
         maximum time to wait for the callback (default 5m)
+  -h
+        print help and exit
+  -V
+        print version and exit
 `
 
 type valuesFlag []string
@@ -85,6 +91,7 @@ type options struct {
 	tokenHeaders valuesFlag
 	noBrowser    bool
 	timeout      time.Duration
+	showVersion  bool
 }
 
 type dependencies struct {
@@ -110,6 +117,10 @@ func run(ctx context.Context, args []string, stdout, stderr io.Writer, deps depe
 	if err != nil {
 		fmt.Fprintf(stderr, "error: %v\n", err)
 		return 1
+	}
+	if opts.showVersion {
+		_, _ = io.WriteString(stdout, version+"\n")
+		return 0
 	}
 
 	authParams, err := parseParams("--auth-param", opts.authParams, authReserved)
@@ -205,6 +216,7 @@ func parseOptions(args []string, output io.Writer) (options, bool, error) {
 	fs.Var(&opts.tokenHeaders, "token-header", "extra token request header as key=value (repeatable)")
 	fs.BoolVar(&opts.noBrowser, "no-browser", false, "print the authorize URL without opening a browser")
 	fs.DurationVar(&opts.timeout, "timeout", 5*time.Minute, "maximum time to wait for the callback")
+	fs.BoolVar(&opts.showVersion, "V", false, "print version and exit")
 	fs.Usage = func() {
 		fmt.Fprintf(output, "Usage: oauth-login [flags]\n\nFlags:\n")
 		io.WriteString(output, helpFlags)
@@ -215,6 +227,9 @@ func parseOptions(args []string, output io.Writer) (options, bool, error) {
 			return opts, true, nil
 		}
 		return opts, false, err
+	}
+	if opts.showVersion {
+		return opts, false, nil
 	}
 	for _, required := range []struct {
 		name  string
